@@ -3,15 +3,15 @@ import matter from 'gray-matter';
 import hydrate from 'next-mdx-remote/hydrate';
 import renderToString from 'next-mdx-remote/render-to-string';
 import path from 'path';
+import BlogPost from '../../components/BlogPost';
+import Layout from '../../components/Layout';
 
-export default function BlogPostPage({ mdx, metaInformation }) {
+export default function BlogPostPage({ mdx, meta }) {
   const content = hydrate(mdx);
   return (
-    <>
-      <p>Test</p>
-      <div>SEO Information: {JSON.stringify(metaInformation)}</div>
-      <div>{content}</div>
-    </>
+    <Layout>
+      <BlogPost meta={meta}>{content}</BlogPost>
+    </Layout>
   );
 }
 
@@ -24,7 +24,7 @@ export async function getStaticProps(ctx) {
   return {
     props: {
       mdx: source,
-      metaInformation: data,
+      meta: data,
     },
   };
 }

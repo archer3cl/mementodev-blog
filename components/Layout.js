@@ -1,5 +1,6 @@
 import Head from 'next/head';
-import Header from './Header';
+import Footer from './Footer';
+import Nav from './Nav';
 
 export default function Layout({ children, pageTitle, ...props }) {
   return (
@@ -8,11 +9,13 @@ export default function Layout({ children, pageTitle, ...props }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{pageTitle}</title>
       </Head>
-      <section className="layout">
-        <Header />
-        <div className="content">{children}</div>
+      <Nav />
+      <section className="container w-full md:max-w-3xl mx-auto pt-20">
+        <div className="w-full px-4 md:px-6 text-xl text-gray-800 leading-normal">
+          {children}
+        </div>
       </section>
-      <footer>Built by me!</footer>
+      <Footer />
     </>
   );
 }
