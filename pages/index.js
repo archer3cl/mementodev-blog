@@ -4,14 +4,23 @@ import path from 'path';
 import Layout from '../components/Layout';
 import PostList from '../components/PostList';
 import { postFilePaths, POSTS_PATH } from '../utils/mdxUtils';
+import { listTags } from '../lib/tags';
+import TagButton from '../components/TagButton';
 
-const Index = ({ title, description, posts, ...props }) => (
+const Index = ({ title, description, posts, tags, ...props }) => (
   <Layout>
     <hi className="title">Welcome to my blog!</hi>
     <p className="description">{description}</p>
     <main>
       <PostList posts={posts} />
     </main>
+    <ul>
+      {tags.map((it, i) => (
+        <li key={i}>
+          <TagButton tag={it} />
+        </li>
+      ))}
+    </ul>
   </Layout>
 );
 
@@ -31,9 +40,12 @@ export async function getStaticProps() {
     };
   });
 
+  const tags = listTags();
+
   return {
     props: {
       posts,
+      tags,
       title: configData.default.title,
       description: configData.default.description,
     },
