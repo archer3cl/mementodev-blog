@@ -9,18 +9,17 @@ import TagButton from '../components/TagButton';
 
 const Index = ({ title, description, posts, tags, ...props }) => (
   <Layout>
-    <hi className="title">Welcome to my blog!</hi>
-    <p className="description">{description}</p>
+    <header className="text-center mb-4">
+      <h1 className="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-3xl md:text-4xl">
+        {title}
+      </h1>
+      <p className="text-sm md:text-base font-normal text-gray-600">
+        {description}
+      </p>
+    </header>
     <main>
       <PostList posts={posts} />
     </main>
-    <ul>
-      {tags.map((it, i) => (
-        <li key={i}>
-          <TagButton tag={it} />
-        </li>
-      ))}
-    </ul>
   </Layout>
 );
 
@@ -34,8 +33,7 @@ export async function getStaticProps() {
     const { content, data } = matter(source);
 
     return {
-      mdx: content,
-      metaInformation: data,
+      meta: data,
       slug: filePath.replace(/^.*[\\/]/, '').slice(0, -4),
     };
   });
