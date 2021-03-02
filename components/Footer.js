@@ -4,8 +4,8 @@ import { useTag } from '../lib/tags';
 export default function Footer() {
   const { listTags } = useTag();
   return (
-    <footer>
-      <div className="dark:bg-gray-800 w-full mx-auto xl:max-w-5xl px-4 md:px-6 py-20 flex flex-col md:flex-row md:flex-nowrap md:justify-between">
+    <footer className="dark:bg-gray-800">
+      <div className="w-full mx-auto xl:max-w-5xl px-4 md:px-6 py-20 flex flex-col md:flex-row md:flex-nowrap md:justify-between">
         <div className="text-left mb-4 md:w-96">
           <div className="flex title-font font-medium items-center justify-start text-gray-900 dark:text-gray-50 mb-4">
             <svg
@@ -55,7 +55,7 @@ export default function Footer() {
             <nav className="list-none mb-10 space-y-2">
               {listTags().map((tag) => (
                 <li key={tag.slug}>
-                  <Link href={`posts/tags/${tag.slug}`}>
+                  <Link href={`/posts/tags/${tag.slug}`}>
                     <a className="underline-effect capitalize">{tag.name}</a>
                   </Link>
                 </li>
