@@ -4,18 +4,14 @@ import path from 'path';
 import Layout from '../components/Layout';
 import PostList from '../components/PostList';
 import { postFilePaths, POSTS_PATH } from '../utils/mdxUtils';
-import { listTags } from '../lib/tags';
-import TagButton from '../components/TagButton';
 
 const Index = ({ title, description, posts, tags, ...props }) => (
   <Layout>
-    <header className="text-center mb-4">
-      <h1 className="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-3xl md:text-4xl">
+    <header className="text-center mb-12">
+      <h1 className="font-bold font-sans break-normal pt-6 pb-2 text-3xl md:text-4xl">
         {title}
       </h1>
-      <p className="text-sm md:text-base font-normal text-gray-600">
-        {description}
-      </p>
+      <p className="text-sm md:text-base font-normal">{description}</p>
     </header>
     <main>
       <PostList posts={posts} />
@@ -38,12 +34,9 @@ export async function getStaticProps() {
     };
   });
 
-  const tags = listTags();
-
   return {
     props: {
       posts,
-      tags,
       title: configData.default.title,
       description: configData.default.description,
     },

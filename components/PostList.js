@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import formatDate from '../lib/formatDate';
-import { getTag } from '../lib/tags';
+import { useTag } from '../lib/tags';
 
 export default function PostList({ posts }) {
+  const { getTag } = useTag();
   if (posts === 'undefined') return null;
   return (
     <div>
@@ -11,25 +12,28 @@ export default function PostList({ posts }) {
         {posts &&
           posts.map((post) => (
             <article key={post.slug} className="mb-4">
-              <div className="flex flex-col md:border-l-2 md:border-gray-400 md:pl-4 md:py-3">
-                <h2 className="font-bold font-sans break-normal text-gray-900 text-3xl md:text-4xl mb-2">
-                  <Link href={{ pathname: `/post/${post.slug}` }}>
-                    <a>{post.meta.title}</a>
-                  </Link>
-                </h2>
-                <p className="text-sm md:text-base mb-4 text-gray-600">
-                  {formatDate(post.meta.date)}
-                </p>
-                <p className="text-sm md:text-base mb-4 text-gray-600">
-                  {post.meta.excerpt}
-                </p>
-                <div>
-                  <Link href={{ pathname: `/post/${post.slug}` }}>
-                    <a className="text-sm md:text-base mb-4 uppercase font-bold">
-                      Read more ➟
-                    </a>
-                  </Link>
-                </div>
+              <div className="md:border-l-2 md:border-blue-soda md:dark:border-pink-sunset md:pl-4 md:py-3">
+                <Link href={`/post/${post.slug}`}>
+                  <a className="group flex flex-col">
+                    <h2 className="font-bold font-sans break-normal text-3xl md:text-4xl mb-2">
+                      <span className="group-hover:underline-effect">
+                        {post.meta.title}
+                      </span>
+                    </h2>
+                    <p className="text-sm md:text-base mb-4">
+                      {formatDate(post.meta.date)}
+                    </p>
+                    <p className="text-sm md:text-base mb-4">
+                      {post.meta.excerpt}
+                    </p>
+                    <p className="text-sm md:text-base uppercase font-bold mb-4">
+                      <span className="mr-2">Read more</span>
+                      <span className="hidden group-hover:inline-block text-blue-soda dark:text-pink-sunset">
+                        ➟
+                      </span>
+                    </p>
+                  </a>
+                </Link>
                 <div className="inline-flex flex-wrap gap-1 text-sm md:text-base">
                   {post.meta.tags.map((slug, i) => {
                     const tag = getTag(slug);
@@ -38,7 +42,7 @@ export default function PostList({ posts }) {
                         href={{ pathname: `/post/tags/${tag.slug}` }}
                         key={i}
                       >
-                        <a>#{tag.name}</a>
+                        <a className="underline-effect">#{tag.name}</a>
                       </Link>
                     );
                   })}
