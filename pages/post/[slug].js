@@ -5,9 +5,13 @@ import renderToString from 'next-mdx-remote/render-to-string';
 import path from 'path';
 import BlogPost from '../../components/BlogPost';
 import Layout from '../../components/Layout';
+import Video from '../../components/Post/Video';
+import UnderlineLink from '../../components/Post/UnderlineLink';
+
+const components = { Video, UnderlineLink };
 
 export default function BlogPostPage({ mdx, meta }) {
-  const content = hydrate(mdx);
+  const content = hydrate(mdx, { components });
   return (
     <Layout>
       <BlogPost meta={meta}>{content}</BlogPost>

@@ -20,62 +20,62 @@
   html.dark body {
     @apply text-gray-50;
   }
-}
 
-.underline-effect {
-  text-decoration: none;
-  --underlineWidth: 2px;
-  --blockLength: 1rem;
-  background-image: linear-gradient(90deg, var(--color-primary), var(--color-primary)),
-    linear-gradient(var(--color-secondary), var(--color-secondary)),
-    linear-gradient(var(--color-secondary), var(--color-secondary));
-  background-repeat: no-repeat;
-  background-size: var(--blockLength) var(--underlineWidth), 0 var(--underlineWidth), 0 var(--underlineWidth);
-  background-position: calc(var(--blockLength) * -1) 100%, 100% 100%, 0 100%;
-  transition: background-size 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s,
-    background-position 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s, color 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s;
-}
+  .underline-effect {
+    text-decoration: none;
+    --underlineWidth: 2px;
+    --blockLength: 1rem;
+    background-image: linear-gradient(90deg, var(--color-primary), var(--color-primary)),
+      linear-gradient(var(--color-secondary), var(--color-secondary)),
+      linear-gradient(var(--color-secondary), var(--color-secondary));
+    background-repeat: no-repeat;
+    background-size: var(--blockLength) var(--underlineWidth), 0 var(--underlineWidth), 0 var(--underlineWidth);
+    background-position: calc(var(--blockLength) * -1) 100%, 100% 100%, 0 100%;
+    transition: background-size 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s,
+      background-position 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s, color 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s;
+  }
 
-.underline-effect:hover {
-  text-decoration: none;
-  --underlineWidth: 2px;
-  --blockLength: 0.75rem;
-  background-image: linear-gradient(90deg, var(--color-primary), var(--color-primary)),
-    linear-gradient(var(--color-secondary), var(--color-secondary)),
-    linear-gradient(var(--color-secondary), var(--color-secondary));
-  background-repeat: no-repeat;
-  background-size: var(--blockLength) var(--underlineWidth), 0 var(--underlineWidth), 100% var(--underlineWidth);
-  background-position: calc(100% + var(--blockLength)) 100%, 100% 100%, 0 100%;
-  transition: background-size 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s,
-    background-position 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s, color 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s;
-  border: none;
-}
+  .underline-effect:hover {
+    text-decoration: none;
+    --underlineWidth: 2px;
+    --blockLength: 0.75rem;
+    background-image: linear-gradient(90deg, var(--color-primary), var(--color-primary)),
+      linear-gradient(var(--color-secondary), var(--color-secondary)),
+      linear-gradient(var(--color-secondary), var(--color-secondary));
+    background-repeat: no-repeat;
+    background-size: var(--blockLength) var(--underlineWidth), 0 var(--underlineWidth), 100% var(--underlineWidth);
+    background-position: calc(100% + var(--blockLength)) 100%, 100% 100%, 0 100%;
+    transition: background-size 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s,
+      background-position 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s, color 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s;
+    border: none;
+  }
 
-.group .group-hover\:underline-effect {
-  text-decoration: none;
-  --underlineWidth: 2px;
-  --blockLength: 1rem;
-  background-image: linear-gradient(90deg, var(--color-primary), var(--color-primary)),
-    linear-gradient(var(--color-secondary), var(--color-secondary)),
-    linear-gradient(var(--color-secondary), var(--color-secondary));
-  background-repeat: no-repeat;
-  background-size: var(--blockLength) var(--underlineWidth), 0 var(--underlineWidth), 0 var(--underlineWidth);
-  background-position: calc(var(--blockLength) * -1) 100%, 100% 100%, 0 100%;
-  transition: background-size 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s,
-    background-position 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s, color 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s;
-}
+  .group .group-hover\:underline-effect {
+    text-decoration: none;
+    --underlineWidth: 2px;
+    --blockLength: 1rem;
+    background-image: linear-gradient(90deg, var(--color-primary), var(--color-primary)),
+      linear-gradient(var(--color-secondary), var(--color-secondary)),
+      linear-gradient(var(--color-secondary), var(--color-secondary));
+    background-repeat: no-repeat;
+    background-size: var(--blockLength) var(--underlineWidth), 0 var(--underlineWidth), 0 var(--underlineWidth);
+    background-position: calc(var(--blockLength) * -1) 100%, 100% 100%, 0 100%;
+    transition: background-size 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s,
+      background-position 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s, color 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s;
+  }
 
-.group:hover .group-hover\:underline-effect {
-  text-decoration: none;
-  --underlineWidth: 2px;
-  --blockLength: 0.75rem;
-  background-image: linear-gradient(90deg, var(--color-primary), var(--color-primary)),
-    linear-gradient(var(--color-secondary), var(--color-secondary)),
-    linear-gradient(var(--color-secondary), var(--color-secondary));
-  background-repeat: no-repeat;
-  background-size: var(--blockLength) var(--underlineWidth), 0 var(--underlineWidth), 100% var(--underlineWidth);
-  background-position: calc(100% + var(--blockLength)) 100%, 100% 100%, 0 100%;
-  transition: background-size 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s,
-    background-position 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s, color 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s;
-  border: none;
+  .group:hover .group-hover\:underline-effect {
+    text-decoration: none;
+    --underlineWidth: 2px;
+    --blockLength: 0.75rem;
+    background-image: linear-gradient(90deg, var(--color-primary), var(--color-primary)),
+      linear-gradient(var(--color-secondary), var(--color-secondary)),
+      linear-gradient(var(--color-secondary), var(--color-secondary));
+    background-repeat: no-repeat;
+    background-size: var(--blockLength) var(--underlineWidth), 0 var(--underlineWidth), 100% var(--underlineWidth);
+    background-position: calc(100% + var(--blockLength)) 100%, 100% 100%, 0 100%;
+    transition: background-size 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s,
+      background-position 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s, color 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) 0s;
+    border: none;
+  }
 }

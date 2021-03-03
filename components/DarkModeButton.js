@@ -8,7 +8,7 @@ export default function DarkModeButton() {
   }
 
   return (
-    <div className="fixed bottom-0 left-0 mb-4 ml-4">
+    <div className="fixed bottom-0 left-0 mb-4 ml-4 z-10">
       <div className="flex justify-between items-center">
         <button
           type="button"
