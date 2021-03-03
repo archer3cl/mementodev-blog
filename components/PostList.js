@@ -7,7 +7,7 @@ export default function PostList({ posts }) {
   if (posts === 'undefined') return null;
   return (
     <div>
-      {!posts && <div>No posts!</div>}
+      {posts.length === 0 && <div>No posts!</div>}
       <div className="grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-6">
         {posts &&
           posts.map((post) => (
@@ -38,10 +38,7 @@ export default function PostList({ posts }) {
                   {post.meta.tags.map((slug, i) => {
                     const tag = getTag(slug);
                     return (
-                      <Link
-                        href={{ pathname: `/post/tags/${tag.slug}` }}
-                        key={i}
-                      >
+                      <Link href={{ pathname: `/tags/${tag.slug}` }} key={i}>
                         <a className="underline-effect">#{tag.name}</a>
                       </Link>
                     );
