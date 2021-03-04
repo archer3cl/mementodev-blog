@@ -16,12 +16,11 @@ export default function Layout({ children, pageTitle, ...props }) {
         )}
       </Head>
       <Nav />
-      <section className="w-full xl:max-w-5xl mx-auto py-20">
+      <section className="w-full xl:max-w-5xl mx-auto pt-12 pb-10">
         <div className="w-full px-4 md:px-6 text-xl leading-normal">
           {children}
         </div>
       </section>
-      <DarkModeButton />
       <ScrollTopButton />
       <Footer />
     </>

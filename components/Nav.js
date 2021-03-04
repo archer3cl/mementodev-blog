@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import DarkModeButton from './DarkModeButton';
 
 export default function Nav() {
   const [scrollDown, setscrollDown] = useState(false);
@@ -14,7 +15,7 @@ export default function Nav() {
 
   return (
     <nav
-      className={`fixed w-full z-10 top-0 bg-gray-50 dark:bg-gray-900 ${
+      className={`fixed w-full z-10 top-0 bg-gray-50 dark:bg-gray-900 pt-2 ${
         scrollDown ? 'shadow' : null
       }`}
     >
@@ -24,6 +25,7 @@ export default function Nav() {
             Memento Dev Blog
           </a>
         </Link>
+        <DarkModeButton />
       </div>
     </nav>
   );
