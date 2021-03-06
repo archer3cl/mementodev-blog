@@ -5,8 +5,8 @@ export default function Video({
   ...props
 }) {
   return (
-    <div className="flex flex-col justify-center ">
-      <div className="video">
+    <div className="grid grid-cols-1 gap-y-4">
+      <div className="flex flex-col justify-center">
         <iframe
           className="w-full mx-auto"
           height="315"

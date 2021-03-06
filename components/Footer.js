@@ -47,7 +47,7 @@ export default function Footer() {
             © 2021-present Alex Vieyra. All Rights Reserved.
           </div>
         </div>
-        <div className="flex">
+        <div className="flex mb-4">
           <div className="w-1/2 md:mr-16">
             <h2 className="title-font font-medium text-gray-900 dark:text-gray-50 tracking-widest text-sm mb-3">
               CATEGORIES
@@ -55,7 +55,9 @@ export default function Footer() {
             <div className="grid grid-cols-1 gap-2">
               {listTags().map((tag) => (
                 <Link href={`/tags/${tag.slug}`} key={tag.slug}>
-                  <a className="underline-effect capitalize">{tag.name}</a>
+                  <a className="underline-effect capitalize w-max">
+                    {tag.name}
+                  </a>
                 </Link>
               ))}
             </div>
@@ -67,7 +69,7 @@ export default function Footer() {
             <div className="grid grid-cols-1 gap-2">
               <a
                 href="https://twitter.com/VieyraFC"
-                className="underline-effect flex items-center"
+                className="underline-effect flex items-center w-max"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -82,7 +84,7 @@ export default function Footer() {
               </a>
               <a
                 href="https://alex-vieyra.itch.io/"
-                className="underline-effect flex items-center"
+                className="underline-effect flex items-center w-max"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

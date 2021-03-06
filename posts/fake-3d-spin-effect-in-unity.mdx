@@ -1,0 +1,194 @@
+---
+title: 'Fake 3D spin effect in Unity'
+date: 'March 01, 2021 (CST)'
+author: 'Alex Vieyra'
+excerpt: 'An easy to follow tutorial to give sprites a fake 3D spin effect using sine waves in Unity'
+tags:
+  - unity
+  - gamedev
+---
+
+Today, I'll be showing you how to use sine waves to create a fake 3D spin/flip effect on sprites.
+
+<Image
+  src="/images/post/fake-3d-spin-effect-in-unity/Final.gif"
+  width="344"
+  height="399"
+  alt="Demo of finalized tutorial"
+  description="The final result"
+/>
+
+One of the game devs I follow, check <UnderlineLink url="https://store.steampowered.com/app/1345860/Grapple_Dog/" text="Grapple Dog 🐶" target="_blank" />, shared a youtube channel dedicated to tutorials and other game dev content aimed for GameMaker Studio.
+
+So I thought it would be interesting to replicate some of the materials over Unity, to serve as a practice while working
+on my next project.
+
+<Video
+  videoSrcURL="https://www.youtube.com/embed/fJxZyHArSKA"
+  videoTitle="Making a fake 3D coin spin effect: a beginner's intro to sine waves (GameMaker Studio tutorial)"
+  description="The video on the channel inspiring this tutorial"
+/>
+
+## Set-up
+
+You can download the sprites used on this tutorial over Kenney <UnderlineLink url="https://kenney.nl/assets/generic-items" text="here" target="_blank" /> and <UnderlineLink url="https://kenney.nl/assets/playing-cards-pack" text="here" target="_blank" />.
+
+First, create a 2D project on Unity (I'll be using version 2019.4.20f1).
+
+Next, create an empty GameObject, rename it **"SteeringWheel"** and then drag the matching image as a child of this object, rename it **"Sprite"**.
+
+<Image
+  src="/images/post/fake-3d-spin-effect-in-unity/Hierarchy.jpg"
+  width="257"
+  height="76"
+  alt="Hierarchy example"
+  description="This is our hierarchy now"
+/>
+
+And that's it for the set-up inside the scene, now let's write the script for the fake rotation.
+
+Create a script called **"Fake3DRotation"** and declare the following field.
+
+```csharp
+using UnityEngine;
+
+public class Fake3DRotation : MonoBehaviour
+{
+    [SerializeField] private float rotationSpeed = 1;
+}
+```
+
+Now, to create the effect we need to manipulate the scale of our sprite. If you set the scale of a sprite to -1, the sprite would flip horizontally.
+So, if we oscillate between 1 and -1 at a set interval of time, this would give the effect as if the object is rotating on itself.
+
+The question is, how are we going to change between those values?
+
+Well, this is where <UnderlineLink url="https://en.wikipedia.org/wiki/Sine_wave" text="sine waves" target="_blank"/> come to play.
+
+## The math
+
+I'm not going to go too deep explaining the math behind this. Just going to explain what is relevant for this exercise.
+
+If you want an easy to watch explanation, Brackeys has an amazing video about this
+
+<Video
+  videoSrcURL="https://www.youtube.com/embed/pEXdTLsEAjk"
+  videoTitle="Game Math Theory - SINE WAVES"
+  description="Math behind sine waves by Brackeys"
+/>
+
+In short, given the function sin(x), any value that we insert in the function will always be between 1 and -1, just the numbers we need!
+
+With this knowledge, let's complete our script
+
+```csharp
+using UnityEngine;
+
+public class Fake3DRotation : MonoBehaviour
+{
+    [SerializeField] private float rotationSpeed = 1;
+
+    private void Update(){
+      var localScale = transform.localScale;
+      localScale.x = Mathf.Sin(Time.time * rotationSpeed);
+      transform.localScale = localScale;
+    }
+}
+```
+
+We are storing on a temporal variable the current scale so we can modify the vector values afterward.
+
+Because we need to animate over time, we are going to use the number of seconds passed since the start of the game with **Time.time**. Then, to control the speed at which the sprite will rotate we simply need to multiply the time with our **rotationSpeed** field.
+
+To rotate horizontally, we assign the result of the **Mathf.Sin** function to the x component of the scale vector.
+
+And finally, we reassign the new vector to the scale of the sprite transform.
+
+Back in Unity, assign the script to the **Sprite** object and click Play to see the results.
+
+<Image
+  src="/images/post/fake-3d-spin-effect-in-unity/Horizontal.gif"
+  width="244"
+  height="259"
+  alt="Horizontal rotation example"
+  description="Change the rotationSpeed to speed up the movement"
+/>
+
+To make the vertical rotation we just add a check to know if we need to change the x or y value of the scale.
+
+```csharp
+using UnityEngine;
+
+public class Fake3DRotation : MonoBehaviour
+{
+    [SerializeField] private float rotationSpeed = 1;
+    [SerializeField] private bool rotateVertical;
+
+    private void Update(){
+      var localScale = transform.localScale;
+      if (rotateVertical)
+        {
+            localScale.y = Mathf.Sin(Time.time * rotationSpeed);
+        }
+        else
+        {
+            localScale.x = Mathf.Sin(Time.time * rotationSpeed);
+        }
+      transform.localScale = localScale;
+    }
+}
+```
+
+This works well with mirrored objects, but if our images have a front and a back then we need to switch the sprites accordingly
+
+## Using multiple sprites
+
+Let's create a new script and name it **Fake3DRotationMultiSprite**, it's going to have the same code as the previous one but we are going to add a few fields and new validations.
+
+```csharp
+using UnityEngine;
+
+public class Fake3DRotationMultiSprite : MonoBehaviour
+{
+    [Header("Control")]
+    [SerializeField] private float rotationSpeed = 1;
+    [SerializeField] private bool rotateVertical;
+
+    [Header("Sprites")]
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Sprite front;
+    [SerializeField] private Sprite back;
+
+    private void Update(){
+      var localScale = transform.localScale;
+      if (rotateVertical)
+        {
+            localScale.y = Mathf.Sin(Time.time * rotationSpeed);
+            spriteRenderer.sprite = localScale.y >= 0 ? front : back;
+        }
+        else
+        {
+            localScale.x = Mathf.Sin(Time.time * rotationSpeed);
+            spriteRenderer.sprite = localScale.x >= 0 ? front : back;
+        }
+      transform.localScale = localScale;
+    }
+}
+```
+
+The SpriteRenderer field is going to reference where we are going to swap our sprites.
+The front and back Sprite fields will reference the respective images of our object.
+
+Finally, we are going to assign an image according to the value returned from the **Mathf.Sin** function. If the value is bigger than 0 then we are on the upper part of the sine wave so we show the front image otherwise, we display the back image. And this applies to both horizontal and vertical rotation.
+
+<Image
+  src="/images/post/fake-3d-spin-effect-in-unity/MultiSprite.gif"
+  width="294"
+  height="235"
+  alt="Multi sprite rotation example"
+  description="Remember to assign all the references"
+/>
+
+That's it! I hope you found this tutorial useful and use this effect in future projects.
+
+Till next time! 👋

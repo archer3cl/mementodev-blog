@@ -13,7 +13,7 @@ export default function DarkModeButton() {
       className="w-12 h-6 flex items-center rounded-full ring transform duration-300 ease-in-out bg-gray-50 dark:bg-gray-900 focus:outline-none"
       onClick={toggleDarkMode}
     >
-      <div className="dark:bg-gray-50 bg-gray-900 w-8 h-8 -m-1 rounded-full shadow-md transform duration-300 ease-in-out dark:translate-x-6 flex items-center">
+      <span className="dark:bg-gray-50 bg-gray-900 w-8 h-8 -m-1 rounded-full shadow-md transform duration-300 ease-in-out dark:translate-x-6 flex items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 488 488"
@@ -57,7 +57,7 @@ export default function DarkModeButton() {
             fill="#231f20"
           />
         </svg>
-      </div>
+      </span>
     </button>
   );
 }

@@ -21,9 +21,7 @@ export default function Nav() {
     >
       <div className="w-full xl:max-w-5xl mx-auto flex flex-wrap items-center justify-between mt-0 py-3 px-4 md:px-6">
         <Link href="/">
-          <a className="font-extrabold text-xl underline-effect">
-            Memento Dev Blog
-          </a>
+          <a className="font-extrabold text-xl underline-effect">Memento Dev</a>
         </Link>
         <DarkModeButton />
       </div>

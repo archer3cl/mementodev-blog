@@ -22,7 +22,7 @@
   }
 
   .underline-effect {
-    text-decoration: none;
+    text-decoration: none !important;
     --underlineWidth: 2px;
     --blockLength: 1rem;
     background-image: linear-gradient(90deg, var(--color-primary), var(--color-primary)),
@@ -36,7 +36,7 @@
   }
 
   .underline-effect:hover {
-    text-decoration: none;
+    text-decoration: none !important;
     --underlineWidth: 2px;
     --blockLength: 0.75rem;
     background-image: linear-gradient(90deg, var(--color-primary), var(--color-primary)),
