@@ -1,5 +1,3 @@
-import NextImage from 'next/image';
-
 export default function Image({
   src,
   width,
@@ -9,19 +7,12 @@ export default function Image({
   ...props
 }) {
   return (
-    <div className="grid grid-cols-1 gap-y-4">
-      <div className="flex justify-center">
-        <NextImage
-          className="self-center"
-          src={src}
-          width={width}
-          height={height}
-          alt={alt}
-          layout="fixed"
-        />
-      </div>
+    <div className="grid grid-cols-1 justify-items-center">
+      <img src={src} alt={alt} />
       {description && (
-        <span className="text-center text-sm md:text-base">{description}</span>
+        <span className="text-center text-sm md:text-base -mt-6">
+          {description}
+        </span>
       )}
     </div>
   );
