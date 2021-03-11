@@ -24,6 +24,7 @@ export default function ScrollTopButton() {
     >
       <button
         type="button"
+        aria-label="Scropll to top"
         className="group px-4 py-4 transition ease-in duration-200 border-2 border-gray-900 dark:border-gray-50 bg-gray-50 dark:bg-gray-900 focus:outline-none"
         onClick={scrollToTop}
       >

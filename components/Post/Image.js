@@ -8,7 +8,7 @@ export default function Image({
 }) {
   return (
     <div className="grid grid-cols-1 justify-items-center">
-      <img src={src} alt={alt} />
+      <img src={src} alt={alt} width={width} height={height} />
       {description && (
         <span className="text-center text-sm md:text-base -mt-6">
           {description}

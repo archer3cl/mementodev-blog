@@ -1,23 +1,35 @@
 import matter from 'gray-matter';
 import fs from 'fs';
 import path from 'path';
+import { NextSeo } from 'next-seo';
 import Layout from '../components/Layout';
 import PostList from '../components/PostList';
 import { postFilePaths, POSTS_PATH } from '../utils/mdxUtils';
 
 export default function Index({ title, description, posts, tags, ...props }) {
   return (
-    <Layout>
-      <header className="text-center mb-12">
-        <h1 className="font-bold font-sans break-normal pt-6 pb-2 text-3xl md:text-4xl">
-          {title}
-        </h1>
-        <p className="text-sm md:text-base font-normal">{description}</p>
-      </header>
-      <main>
-        <PostList posts={posts} />
-      </main>
-    </Layout>
+    <>
+      <NextSeo
+        title={title}
+        description={description}
+        openGraph={{
+          url: 'https://mmnto.dev/',
+          title,
+          description,
+        }}
+      />
+      <Layout>
+        <header className="text-center mb-12">
+          <h1 className="font-bold font-sans break-normal pt-6 pb-2 text-3xl md:text-4xl">
+            {title}
+          </h1>
+          <p className="text-sm md:text-base font-normal">{description}</p>
+        </header>
+        <main>
+          <PostList posts={posts} />
+        </main>
+      </Layout>
+    </>
   );
 }
 

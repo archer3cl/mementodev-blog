@@ -10,6 +10,7 @@ export default function DarkModeButton() {
   return (
     <button
       type="button"
+      aria-label="Toggle dark mode"
       className="w-12 h-6 flex items-center rounded-full ring transform duration-300 ease-in-out bg-gray-50 dark:bg-gray-900 focus:outline-none"
       onClick={toggleDarkMode}
     >

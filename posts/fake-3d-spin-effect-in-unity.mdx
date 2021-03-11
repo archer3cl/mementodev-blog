@@ -11,14 +11,14 @@ tags:
 Today, I'll be showing you how to use sine waves to create a fake 3D spin/flip effect on sprites.
 
 <Image
-  src="/images/post/fake-3d-spin-effect-in-unity/Final.gif"
+  src="/images/post/fake-3d-spin-effect-in-unity/Final.webp"
   width="344"
   height="399"
   alt="Demo of finalized tutorial"
   description="The final result"
 />
 
-One of the game devs I follow, check <UnderlineLink url="https://store.steampowered.com/app/1345860/Grapple_Dog/" text="Grapple Dog 🐶" target="_blank" />, shared a youtube channel dedicated to tutorials and other game dev content aimed for GameMaker Studio.
+One of the game devs I follow, check <UnderlineLink url="https://store.steampowered.com/app/1345860/Grapple_Dog/" text="Grapple Dog 🐶" target="_blank" rel="noopener" />, shared a youtube channel dedicated to tutorials and other game dev content aimed for GameMaker Studio.
 
 So I thought it would be interesting to replicate some of the materials over Unity, to serve as a practice while working
 on my next project.
@@ -31,7 +31,7 @@ on my next project.
 
 ## Set-up
 
-You can download the sprites used on this tutorial over Kenney <UnderlineLink url="https://kenney.nl/assets/generic-items" text="here" target="_blank" /> and <UnderlineLink url="https://kenney.nl/assets/playing-cards-pack" text="here" target="_blank" />.
+You can download the <UnderlineLink url="https://kenney.nl/assets/generic-items" text="generic items" target="_blank" rel="noopener" /> and <UnderlineLink url="https://kenney.nl/assets/playing-cards-pack" text="playing cards" target="_blank" rel="noopener" /> sprites used on this tutorial over kenney.nl.
 
 First, create a 2D project on Unity (I'll be using version 2019.4.20f1).
 
@@ -63,7 +63,7 @@ So, if we oscillate between 1 and -1 at a set interval of time, this would give 
 
 The question is, how are we going to change between those values?
 
-Well, this is where <UnderlineLink url="https://en.wikipedia.org/wiki/Sine_wave" text="sine waves" target="_blank"/> come to play.
+Well, this is where <UnderlineLink url="https://en.wikipedia.org/wiki/Sine_wave" text="sine waves" target="_blank" rel="noopener"/> come to play.
 
 ## The math
 
@@ -107,7 +107,7 @@ And finally, we reassign the new vector to the scale of the sprite transform.
 Back in Unity, assign the script to the **Sprite** object and click Play to see the results.
 
 <Image
-  src="/images/post/fake-3d-spin-effect-in-unity/Horizontal.gif"
+  src="/images/post/fake-3d-spin-effect-in-unity/Horizontal.webp"
   width="244"
   height="259"
   alt="Horizontal rotation example"
@@ -182,7 +182,7 @@ The front and back Sprite fields will reference the respective images of our obj
 Finally, we are going to assign an image according to the value returned from the **Mathf.Sin** function. If the value is bigger than 0 then we are on the upper part of the sine wave so we show the front image otherwise, we display the back image. And this applies to both horizontal and vertical rotation.
 
 <Image
-  src="/images/post/fake-3d-spin-effect-in-unity/MultiSprite.gif"
+  src="/images/post/fake-3d-spin-effect-in-unity/MultiSprite.webp"
   width="294"
   height="235"
   alt="Multi sprite rotation example"
