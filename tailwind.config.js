@@ -42,12 +42,5 @@ module.exports = {
       }),
     },
   },
-  variants: {
-    extend: {
-      translate: ['dark'],
-      display: ['group-hover', 'dark'],
-      typography: ['dark'],
-    },
-  },
   plugins: [require('@tailwindcss/typography')],
 };
